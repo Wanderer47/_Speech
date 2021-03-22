@@ -16,7 +16,11 @@ line = r.recognize_google(audio, language='en-US')
 # translate En text in Ru lenguage 
 translator = Translator()
 result = translator.translate(line, dest='ru', src='en')
-# writ result to file
-text_Out = os.path.join(pathlib.Path("Text_Output_En"), f'{audio_name}.txt')
-with open(text_Out, 'w') as text:
+# writ result to file - translate to ru
+text_Out_En_ru = os.path.join(pathlib.Path("Text_Output_En_ru"), f'{audio_name}.txt')
+with open(text_Out_En_ru, 'w') as text:
     text.write(result.text)
+# writ line to file - en
+text_Out_En_en = os.path.join(pathlib.Path("Text_Output_En_en"), f'{audio_name}.txt')
+with open(text_Out_En_en, 'w') as text:
+    text.write(line)
